@@ -1,0 +1,10 @@
+ZDecimalJava Test Package
+
+This jar file contains test programs for ZDecimal for Java.  
+The programs verify ZDecimalJava is working correctly.  
+If you make changes consider running these test on your version.
+These classes require Junit 4 from junit.org. 
+Both junit 4 and ZDecimal java will need to be in your CLASSPATH
+
+Email:  zdecimal [at] benjaminjwhite.name
+
