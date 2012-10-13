@@ -416,9 +416,32 @@ public class TestZoned {
 				(byte) 0xf8,
 				(byte) 0xd9,
 				};
+		/* compare to original input */
+		final byte byta2[] = {  
+				(byte) 0xf1,
+				(byte) 0xf2,
+				(byte) 0xf3,
+				(byte) 0xf4,
+				(byte) 0xf5,
+				(byte) 0xf6,
+				(byte) 0xf7,
+				(byte) 0xf8,
+				(byte) 0xf9,
+				(byte) 0xf0,
+				(byte) 0xf1,
+				(byte) 0xf2,
+				(byte) 0xf3,
+				(byte) 0xf4,
+				(byte) 0xf5,
+				(byte) 0xf6,
+				(byte) 0xf7,
+				(byte) 0xf8,
+				(byte) 0xd9,
+				};
 		long lnum;
 		lnum = ZoneDec.zoneToLong(byta1);
 		Assert.assertEquals( -1234567890123456789l, lnum);
+		Assert.assertArrayEquals(byta1, byta2);
 	}
 	@Test public void zoneToLong3() throws Exception {
 		final byte byta1[] = {  
@@ -566,8 +589,10 @@ public class TestZoned {
 				(byte) 0xf8,
 				(byte) 0xd9
 				};
+		byte[] byta2 = byta1.clone();
 		String snum = ZoneDec.zoneToString(byta1 );
 		Assert.assertEquals( "-1234567890123456789", snum );
+		Assert.assertArrayEquals(byta1, byta2);
 	}
 	@Test public void zoneToString2() throws Exception {
 		final byte byta1[] = { 

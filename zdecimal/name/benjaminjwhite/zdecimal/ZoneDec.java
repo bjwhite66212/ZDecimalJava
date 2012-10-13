@@ -220,7 +220,7 @@ public class ZoneDec {
 		boolean isminus = false;
 		String str;
 		long lnum;
-		byte [] bytearray = bytearrayi;
+		byte [] bytearray = bytearrayi.clone();
 		int i = bytearray.length - 1;
 		int b1 = (bytearray[i] & 0xf0) >>> 4;
 		if (11 == b1 || 13 == b1)
@@ -269,7 +269,7 @@ public class ZoneDec {
 		String str;
 		int b1;
 		int i;
-		byte [] znbytes = znbytesi;
+		byte [] znbytes = znbytesi.clone();
 		int znlen = znbytes.length;
 		i = znlen - 1;
 		b1 = znbytes[i];

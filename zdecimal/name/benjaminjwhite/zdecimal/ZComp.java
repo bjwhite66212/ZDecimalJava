@@ -14,9 +14,9 @@
  * limitations under the License.
  * 
  * $Author: bjwhite66212 $
- * $Date: 2007/08/10 00:56:14 $
+ * $Date: $
  *
- * $Revision: 1.0 $
+ * $Revision: $
  * 
  */
 /**
@@ -35,24 +35,22 @@
 package name.benjaminjwhite.zdecimal;
 
 /**
- * @author ben
+ * @author bjwhite66212
  * 
  */
 public class ZComp {
 	/**
-	 * Converts byte array to short
+	 * Converts byte array to short, unsigned numbers
 	 * 
-	 * @param bai - byte array 2 long, COBOL PIC 9(1 to 4) USAGE IS COMPUTATIONAL
+	 * @param ba - byte array 2 long, COBOL PIC 9(1 to 4) USAGE IS COMPUTATIONAL
 	 * @return short value
 	 * @throws FixedPointDivideException
 	 */
-	public static short compSortValue(byte[] bai)
+	public static short compShortValue(byte[] ba)
 			throws FixedPointDivideException {
-		byte [] ba;
-		ba = bai;	
-			if (bai.length != 2)
+		if (ba.length != 2)
 			throw new FixedPointDivideException(
-					"bytee array length must be 2, but is: " + bai.length);
+					"bytee array length must be 2, but is: " + ba.length);
 		int i;
 		i = ba[0] & 0xff;
 		i = i << 8;
@@ -60,18 +58,18 @@ public class ZComp {
 		return ((short) i);
 	}
 /**
- * Convert byte array to int
+ * Convert byte array to int, unsigned numbers
  * 
- * @param bai - byte array 4 long, COBOL PIC 9(5 to 9) USAGE IS COMPUTATIONAL
+ * @param ba - byte array 4 long, COBOL PIC 9(5 to 9) USAGE IS COMPUTATIONAL
  * @return int value
  * @throws FixedPointDivideException
  */
-	public static int compIntValue(byte[] bai) throws FixedPointDivideException {
-		byte [] ba = bai;
-		if (bai.length != 4)
+	public static int compIntValue(byte[] ba) throws FixedPointDivideException {
+		if (ba.length != 4)
 			throw new FixedPointDivideException(
-					"byte array length must be 4, but is: " + bai.length);
-		long i = 0l;
+					"byte array length must be 4, but is: " + ba.length);
+		long i = ba[0] & 0xff ;
+		i = i << 8;		
 		i += ba[1] & 0xff;
 		i = i << 8;
 		i += ba[2] & 0xff;

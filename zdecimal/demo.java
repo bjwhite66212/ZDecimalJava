@@ -42,7 +42,7 @@ import name.benjaminjwhite.zdecimal.ZoneDec;
  * JRIO and CICS are registered trademarks of IBM corporation.
  * 
  * @author zdecimal [ at ] benjaminjwhite.name
- * @version 3.2.1
+ * @version 4
  * 
  */
 public class demo {

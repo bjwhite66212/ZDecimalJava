@@ -17,6 +17,9 @@
 	The demo.java file contains an example program
 	The doc directory contains JavaDoc HTML for the package.
 	--
+        Version 4
+        Correct modification of input parameters
+	-- 
 	Version 3.2.1
 	Change the IBM name from Z/Series to System Z in comments and documentation. 
 	--
@@ -25,7 +28,7 @@
 	--
 	Version 3.1
 	More minor optimization
-    --
+        --
 	Version 3
 	
 	Performance optimization of some methods.
