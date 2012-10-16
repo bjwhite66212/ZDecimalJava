@@ -56,7 +56,7 @@ package name.benjaminjwhite.zdecimal;
  * <a href="http://www.telekinesis.com.au">Esmond Pitt</a>
  * <br/>
  * "Barak Shilo" for alert to decimal overflow bug in PackDec.<br/>
- * <a href"http://ssatguru.users.sourceforge.net/">satguru prasad srivastava</a> for discovering input alteration bug.<br/>
+ * <a href="http://ssatguru.users.sourceforge.net/">satguru prasad srivastava</a> for discovering input alteration bug.<br/>
  * 
  * 
  * @see <a href="http://www.ibm.com">IBM.COM</a>
