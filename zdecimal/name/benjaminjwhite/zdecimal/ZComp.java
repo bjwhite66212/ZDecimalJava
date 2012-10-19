@@ -14,10 +14,6 @@
  * limitations under the License.
  * 
  * $Author: bjwhite66212 $
- * $Date: $
- *
- * $Revision: $
- * 
  */
 /**
  * Utility class to convert byte arrays representing binary numbers to and from Java short

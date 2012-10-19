@@ -13,18 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * $Author: bjwhite66212 $
- * $Date: 2007/08/10 00:56:14 $
- * $Log: demo.java,v $
- * Revision 1.2  2007/08/10 00:56:14  bjwhite66212
- * Check in files for Version 3
- *
- * Revision 1.1.1.1  2006/09/22 01:15:53  bjwhite66212
- * Project imported
- *
- * $Revision: 1.2 $
- *
- */
+ *  */
 
 import name.benjaminjwhite.zdecimal.PackDec;
 import name.benjaminjwhite.zdecimal.ZoneDec;

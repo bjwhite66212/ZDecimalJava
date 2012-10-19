@@ -14,8 +14,6 @@
  * limitations under the License.
  *
  * $Author: bjwhite66212 $
- * $Date: 2007/08/05 23:20:00 $
- * $Revision: 1.7 $
  * 
  */
 package name.benjaminjwhite.zdecimaltest;
