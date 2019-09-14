@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>zdecimal</name>
+	<name>name.benjaminjwhite.zdecimaltest</name>
 	<comment></comment>
 	<projects>
+		<project>name.benjaminjwhite.zdecimal</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

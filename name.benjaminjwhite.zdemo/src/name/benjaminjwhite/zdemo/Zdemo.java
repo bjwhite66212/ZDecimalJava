@@ -1,3 +1,4 @@
+package name.benjaminjwhite.zdemo;
 /*
  * demo.java - System Z packed decimal utility demonstration
  * 
@@ -34,7 +35,7 @@ import name.benjaminjwhite.zdecimal.ZoneDec;
  * @version 4
  * 
  */
-public class demo {
+public class Zdemo {
 	
 	/**
 	 * 
