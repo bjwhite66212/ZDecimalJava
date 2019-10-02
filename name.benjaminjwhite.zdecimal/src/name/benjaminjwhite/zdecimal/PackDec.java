@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * $Author: bjwhite66212 $
- *
  */
 package name.benjaminjwhite.zdecimal;
 
@@ -63,7 +61,7 @@ package name.benjaminjwhite.zdecimal;
  *      home page</a>
  * 
  * @author zdecimal [ at ] benjaminjwhite.name
- * @version 4
+ * @version 5
  */
 
 public class PackDec {
@@ -182,49 +180,49 @@ public class PackDec {
 		endloop = lenpknum - 1; // don't include last byte in loop
 		for (i = 0; i < endloop; i++) {
 			if (lnum > maxlongdiv10)
-				throw new FixedPointDivideException("Number too big "
-						+ bytesToHex(pknum));
+				throw new FixedPointDivideException(new StringBuffer("Number too big ").append(
+						bytesToHex(pknum)).toString());
 			lnum *= 10;
 			nibble = (pknum[i] & 0xf0) >>> 4;
 			if (nibble > 9)
-				throw new DataException("Invalid decimal digit: " + nibble
-						+ " in " + bytesToHex(pknum));
+				throw new DataException(new StringBuffer("Invalid decimal digit: ").append(nibble)
+						.append(" in ").append(bytesToHex(pknum)).toString());
 			lnum += nibble;
 			if (lnum > maxlongdiv10)
-				throw new FixedPointDivideException("Number too big "
-						+ bytesToHex(pknum));
+				throw new FixedPointDivideException(new StringBuffer("Number too big ")
+						.append(bytesToHex(pknum)).toString());
 			lnum *= 10;
 			nibble = (pknum[i] & 0x0f);
 			if (nibble > 9)
-				throw new DataException("Invalid decimal digit: " + nibble
-						+ " in " + bytesToHex(pknum));
+				throw new DataException(new StringBuffer("Invalid decimal digit: ").append(nibble)
+						.append(" in ").append(bytesToHex(pknum)).toString());
 			lnum += nibble;
 		}
 		// Process the last byte. Lower 4 bits are sign
 		if (lnum > maxlongdiv10)
-			throw new FixedPointDivideException("Number too big "
-					+ bytesToHex(pknum));
+			throw new FixedPointDivideException(new StringBuffer("Number too big ")
+					.append(bytesToHex(pknum)).toString());
 		lnum *= 10;
 		nibble = (pknum[i] & 0xf0) >>> 4;
 		nibble2 = (pknum[i] & 0x0f);
 		if (nibble2 < 10)
-			throw new DataException("Invalid deciaml sign  "
-					+ bytesToHex(pknum));
+			throw new DataException(new StringBuffer("Invalid deciaml sign  ")
+					.append(bytesToHex(pknum)).toString());
 		if (nibble > 9)
-			throw new DataException("Invalid decimal digit: " + nibble + " in "
-					+ bytesToHex(pknum));
+			throw new DataException(new StringBuffer("Invalid decimal digit: ").append(nibble).append(" in ")
+					.append(bytesToHex(pknum)).toString());
 		if ( nibble2 == 11 || nibble2 == 13 )
 			if (lnum > maxlongm8)
-				throw new FixedPointDivideException("Number too big "
-					+ bytesToHex(pknum));
+				throw new FixedPointDivideException(new StringBuffer("Number too big ").append(
+					bytesToHex(pknum)).toString());
 			else {
 				lnum *= -1;
 				lnum -= nibble;
 			}
 		else
 			if (lnum > maxlongm7)
-				throw new FixedPointDivideException("Number too big "
-					+ bytesToHex(pknum));
+				throw new FixedPointDivideException(new StringBuffer("Number too big ")
+					.append(bytesToHex(pknum)).toString());
 			else
 				lnum += nibble;
 		return (lnum);
@@ -274,25 +272,24 @@ public class PackDec {
 		for (i = 0; i < endloop; i++) {
 			nibble = (pknum[i] & 0xf0) >>> 4;
 			if (nibble > 9)
-				throw new DataException("Invalid decimal digit: " + nibble
-						+ " in " + bytesToHex(pknum));
+				throw new DataException(new StringBuffer("Invalid decimal digit: ").append(nibble)
+						.append(" in ").append(bytesToHex(pknum)).toString());
 			strbuf.append(digits[nibble]);
 			nibble = (pknum[i] & 0x0f);
 			if (nibble > 9)
-				throw new DataException("Invalid decimal digit: " + nibble
-						+ " in " + bytesToHex(pknum));
+				throw new DataException(new StringBuffer("Invalid decimal digit: ").append(nibble)
+						.append(" in ").append(bytesToHex(pknum)).toString());
 			strbuf.append(digits[nibble]);
 		}
 		// Last byte contains sign
 		nibble = (pknum[i] & 0xf0) >>> 4;
 		if (nibble > 9)
-			throw new DataException("Invalid decimal digit: " + nibble + " in "
-					+ bytesToHex(pknum));
+			throw new DataException(new StringBuffer("Invalid decimal digit: ").append(nibble).append(" in ")
+					.append(bytesToHex(pknum)).toString());
 		strbuf.append(digits[nibble]);
 		nibble = (pknum[i] & 0x0f);
 		if (nibble < 10)
-			throw new DataException("Invalid deciaml sign: "
-					+ bytesToHex(pknum));
+			throw new DataException(new StringBuffer("Invalid deciaml sign: ").append(bytesToHex(pknum)).toString());
 		if (11 == nibble || 13 == nibble)
 			strbuf.insert(0, '-');
 		else
@@ -360,8 +357,8 @@ public class PackDec {
 				if (j < 0) { /*
 							 * rarely will be need, may remove for performance
 							 */
-					throw new DecimalOverflowException("Number too large:"
-							+ str);
+					throw new DecimalOverflowException(new StringBuffer("Number too large:")
+							.append(str).toString());
 				}
 				nibble = (byte) (ch1 - '0');
 				if (nibble_ordinal) {
@@ -388,8 +385,8 @@ public class PackDec {
 					--i; // get next char
 					break;
 				default:
-					throw new DataException("Invalid decimal digit: " + ch1
-							+ " from input: " + str);
+					throw new DataException(new StringBuffer("Invalid decimal digit: ").append(String.valueOf(ch1))
+							.append(" from input: ").append(str).toString());
 				}
 			}
 		}
@@ -416,12 +413,12 @@ public class PackDec {
 		byte[] pknum = stringToPack(str); /* get packed num of length 16 */
 		int pklen = pknum.length;
 		if (len > pklen) // target field can't be over 16 bytes
-			throw new DecimalOverflowException(
-					"Length of target field greater than 16: " + len);
+			throw new DecimalOverflowException( new StringBuffer(
+					"Length of target field greater than 16: ").append(len).toString());
 		if (len < pklen) // check to see of number too big
 			if (pknum[pklen - len - 1] != 0)
-				throw new DecimalOverflowException("Number too big: "
-						+ PackDec.bytesToHex(pknum));
+				throw new DecimalOverflowException(new StringBuffer("Number too big: ")
+						.append(PackDec.bytesToHex(pknum)).toString());
 		int i = offset + len - 1;
 		int j = pklen - 1;
 		int k;

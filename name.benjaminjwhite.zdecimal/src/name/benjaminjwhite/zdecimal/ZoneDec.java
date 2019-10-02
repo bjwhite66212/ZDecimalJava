@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * $Author: bjwhite66212 $
- * 
  */
 
 package name.benjaminjwhite.zdecimal;
@@ -56,7 +54,7 @@ import java.io.UnsupportedEncodingException;
  * @see <a href="http://benjaminjwhite.name/zdecimal">Z Decimal for java project home page</a>
  * 
  * @author zdecimal [ at ] benjaminjwhite.name
- * @version 4
+ * @version 5
  * 
  */
 public class ZoneDec {
@@ -110,7 +108,7 @@ public class ZoneDec {
 		byte[] wrkba = longToZone(lnum);
 		int wrkbalen = wrkba.length;
 		if (wrkbalen > len)
-			throw new DecimalOverflowException("Number too large: " + lnum );
+			throw new DecimalOverflowException(new StringBuffer("Number too large: ").append(lnum).toString());
 		i = offset + len - 1;
 		j = wrkbalen - 1;
 		for (k = 0; k < wrkbalen; k++, i--, j--)
@@ -144,8 +142,8 @@ public class ZoneDec {
 		strlen = wkznstr.length();
 		for (i = 0; i < strlen; i++) {
 			if (!Character.isDigit(wkznstr.charAt(i))) {
-				throw new DataException("Invalid Digit: " + wkznstr.charAt(i) +
-						" in " + znstr );
+				throw new DataException(new StringBuffer("Invalid Digit: ").append(wkznstr.charAt(i)).append(
+						" in ").append(znstr).toString());
 			}
 		}
 		znbytes = wkznstr.getBytes("Cp1047");
@@ -178,21 +176,21 @@ public class ZoneDec {
 	public static void stringToZone(String str, byte[] bytearray, int offset,
 			int len) throws DecimalOverflowException, DataException,
 			UnsupportedEncodingException {
-		String wrkstr;
+		StringBuffer wrkstr;
 		char firstchar = str.charAt(0);
 		if ('-' == firstchar || '+' == firstchar)
 			if (str.length() < 2)
-				throw new DataException("Invalid character" + firstchar + " in "
-						+ str );
+				throw new DataException(new StringBuffer("Invalid character").append(firstchar).append(" in ")
+						.append(str).toString());
 			else
-				wrkstr = firstchar + "000000000000000" + str.substring(1);
+				wrkstr = new StringBuffer(String.valueOf(firstchar)).append("000000000000000").append(str.substring(1));
 		else
-			wrkstr = "000000000000000" + str;
-		byte[] znnum = stringToZone(wrkstr); // get zoned number
+			wrkstr = new StringBuffer("000000000000000").append(str);
+		byte[] znnum = stringToZone(wrkstr.toString()); // get zoned number
 		int znlen = znnum.length;
 		if (len < znlen) // check to see of number too big
 			if (znnum[znlen - len - 1] != -16) // -16 is 0xf0
-				throw new DecimalOverflowException("Number too big: " + str );
+				throw new DecimalOverflowException(new StringBuffer("Number too big: ").append(str).toString());
 		int i = offset + len - 1;
 		int j = znlen - 1;
 		int k;

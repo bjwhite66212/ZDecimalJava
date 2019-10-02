@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * $Author: bjwhite66212 $
  */
+
+package name.benjaminjwhite.zdecimal;
+
 /**
  * Utility class to convert byte arrays representing binary numbers to and from Java short
  * and int.
@@ -25,13 +27,7 @@
  * @see <a href="http://benjaminjwhite.name/zdecimal">Z Decimal for java project home page</a>
  * 
  * @author zdecimal [ at ] benjaminjwhite.name
- * @version 4
- * 
- */
-package name.benjaminjwhite.zdecimal;
-
-/**
- * @author bjwhite66212
+ * @version 5
  * 
  */
 public class ZComp {
@@ -45,8 +41,8 @@ public class ZComp {
 	public static short compShortValue(byte[] ba)
 			throws FixedPointDivideException {
 		if (ba.length != 2)
-			throw new FixedPointDivideException(
-					"bytee array length must be 2, but is: " + ba.length);
+			throw new FixedPointDivideException( new StringBuffer(
+					"bytee array length must be 2, but is: ").append(ba.length).toString());
 		int i;
 		i = ba[0] & 0xff;
 		i = i << 8;
@@ -62,8 +58,8 @@ public class ZComp {
  */
 	public static int compIntValue(byte[] ba) throws FixedPointDivideException {
 		if (ba.length != 4)
-			throw new FixedPointDivideException(
-					"byte array length must be 4, but is: " + ba.length);
+			throw new FixedPointDivideException(new StringBuffer(
+					"byte array length must be 4, but is: ").append(ba.length).toString());
 		long i = ba[0] & 0xff ;
 		i = i << 8;		
 		i += ba[1] & 0xff;
