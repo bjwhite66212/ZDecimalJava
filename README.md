@@ -1,2 +1,5 @@
 # ZDecimalJava
 IBM Z packed decimal for Java
+
+Signed with new key A63B1A8EADAD242AD17F4F3D794690D7DDB046E2
+fingerprint A63B 1A8E ADAD 242A D17F  4F3D 7946 90D7 DDB0 46E2
